@@ -18,7 +18,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import jesusBuenPastor from '../img/jesus-buen-pastor.png';
 
-const ExpandMore = styled((props) => {
+const ExpandMore = styled(props => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -36,32 +36,43 @@ export default function RecipeReviewCard() {
     setExpanded(!expanded);
   };
 
-  const locationUrl = () =>{
-    window.open('https://goo.gl/maps/oxmgzZoYHogm7sXp9','_self');
-  }
+  const locationUrl = () => {
+    window.open('https://goo.gl/maps/oxmgzZoYHogm7sXp9', '_self');
+  };
 
   const sendMessage = () => {
     const isMobileValidate = isMobile();
-    let target='';
+    let target = '';
     let number = '+525516219867';
-    let msg = 'Hola!, me pueden dar informes sobre la escuela de pastoral, Gracias.';
-    isMobileValidate === true ? target = `whatsapp://send?phone=${encodeURIComponent(number)}&text=${encodeURIComponent(msg)}` : target = `https://api.whatsapp.com/send?phone=${encodeURIComponent(number)}&text=${encodeURIComponent(msg)}`;
-    window.open(target,'_self');
-  }
+    let msg =
+      'Hola!, me pueden dar informes sobre la escuela de pastoral, Gracias.';
+    isMobileValidate === true
+      ? (target = `whatsapp://send?phone=${encodeURIComponent(
+          number,
+        )}&text=${encodeURIComponent(msg)}`)
+      : (target = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
+          number,
+        )}&text=${encodeURIComponent(msg)}`);
+    window.open(target, '_self');
+  };
 
-  function isMobile () {
+  function isMobile() {
     // credit to Timothy Huang for this regex test:
     // https://dev.to/timhuang/a-simple-way-to-detect-if-browser-is-on-a-mobile-device-with-javascript-44j3
-    if (/Android | webOS | iPhone | iPad | iPod | BlackBerry | IEMobile | Opera Mini/i.test (navigator.userAgent)) {
-        return true
+    if (
+      /Android | webOS | iPhone | iPad | iPod | BlackBerry | IEMobile | Opera Mini/i.test(
+        navigator.userAgent,
+      )
+    ) {
+      return true;
+    } else {
+      return false;
     }
-    else {
-        return false
-    }
- }
+  }
 
   return (
-    <Card sx={{ maxWidth: 345, margin:"0 auto", background:"rgb(237,224,224)" }}>
+    <Card
+      sx={{ maxWidth: 345, margin: '0 auto', background: 'rgb(237,224,224)' }}>
       <CardHeader
         // avatar={
         //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -73,24 +84,33 @@ export default function RecipeReviewCard() {
         //     <MoreVertIcon />
         //   </IconButton>
         // }
-        title="Escuela de pastoral"
-        subheader="Inicio de curso 4 de septiembre, 2022"
+        title='Escuela de pastoral'
+        subheader='Inicio de curso 4 de septiembre, 2022'
       />
       <CardMedia
-        component="img"
+        component='img'
         image={jesusBuenPastor}
-        alt="JESÚS BUEN PASTOR"
+        alt='JESÚS BUEN PASTOR'
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          <span className='textBlue'>Inscripciones domingo 21 y 28 de agosto.</span>
+        <Typography variant='body2' className='textBlue'>
+          Te invita a conecer el mensaje que Cristo tiene para ti. <br />
+          ¿Cúando? Todos los domingos a 8:00 horas en la capilla de <br />
+          <b className='boldSize'>Sagrado Corazón de María.</b> <br />
+          <br />
+          <b className='boldSize'>
+            {' '}
+            Iniciamos un nuevo curso el 4 de septiembre.
+            <br />
+            Inscripciones domingo 21 y 28 de agosto.
+          </b>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="Informes" onClick={sendMessage}>
-          <WhatsAppIcon sx={{color:"green"}}/>
+        <IconButton aria-label='Informes' onClick={sendMessage}>
+          <WhatsAppIcon sx={{ color: 'green' }} />
         </IconButton>
-        <IconButton aria-label="Dirección" onClick={locationUrl}>
+        <IconButton aria-label='Dirección' onClick={locationUrl}>
           <LocationOnIcon />
         </IconButton>
         {/* <ExpandMore
