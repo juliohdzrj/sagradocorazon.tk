@@ -1,0 +1,7 @@
+node_modules
+.vscode
+.eslintcache
+/src/dist
+./package-lock.json
+/package-lock.json
+package-lock.json

@@ -1,0 +1,17 @@
+{
+  "plugins": ["testing-library", "jest-dom"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "react-app",
+    "react-app/jest",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ],
+  "rules": {
+    "testing-library/await-async-query": "error",
+    "testing-library/no-await-sync-query": "error",
+    "testing-library/no-debugging-utils": "off",
+    "testing-library/no-dom-import": "off"
+  }
+}
