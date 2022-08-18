@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const apiMocker = require('connect-api-mocker');
 
+const TerserPlugin = require('terser-webpack-plugin');
+
 const getMocksConfig = server => {
   if (!server) {
     throw new Error('webpack-dev-server is not defined');
@@ -64,32 +66,19 @@ const rulesForCss = {
   use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
 };
 
-// const rulesForImgs = {
-//   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-//   use: {
-//     loader: 'url-loader',
-//   },
-// };
-
-// const rulesForImgs = {
-//   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-//   use: [
-//     {
-//       loader: 'url-loader',
-//     },
-//   ]
-// };
-
 const rulesForImgs = {
   test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
   loader: 'img-optimize-loader',options: {
+    name: './img/[name].[ext]',
     compress: {
-      webp: true,
-      disableOnDevelopment: true
-    }
-  }, };
+      webp: {
+        quality: 80,
+      },
+      disableOnDevelopment: true,
+    },
+  },
+};
 
-// const rules =[ruleForJavaScript, rulesForScss, rulesForCss, rulesDevTools];
 const rules = [ruleForJavaScript, rulesForCss, rulesDevTools, ruleFonts, rulesForImgs];
 
 module.exports = (env, argv) => {
@@ -102,7 +91,7 @@ module.exports = (env, argv) => {
     entry: ['regenerator-runtime/runtime.js', './src/index.js'],
     output: {
       path: path.join(__dirname, './src/dist'),
-      filename: isProduction ? '[name].[contenthash].js' : 'index.bundle.js',
+      filename: isProduction ? '[name].[contenthash].js' : '[name].chunk.js',
     },
     resolve: {
       extensions: ['*', '.js'],
@@ -151,14 +140,43 @@ module.exports = (env, argv) => {
     devtool: isProduction ? 'hidden-source-map' : 'source-map',
     module: { rules },
     optimization: {
-      minimizer: [new CssMinimizerPlugin()],
+      runtimeChunk: 'single',
+      usedExports: true,
+      removeEmptyChunks: true,
+      removeAvailableModules: true,
+      realContentHash: true,
+      providedExports: true,
+      portableRecords: true,
+      nodeEnv: 'production',
+      moduleIds: 'deterministic',
+      minimize: true,
+      minimizer: [new CssMinimizerPlugin(),
+        new TerserPlugin({ 
+          test: /(\.js(\?.*)?$)|(\.s?css$)/i, // /\.s?css$/i
+          extractComments: true,
+          parallel: true,
+          terserOptions: {
+            // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+          },
+        }),
+      ],
+    },
+    performance: {
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: './public/index.html',
       }),
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: "[name].css",
+        chunkFilename: "[id].css",
+      }),
     ],
+
   };
 };
 // //const webpack = require('webpack');
