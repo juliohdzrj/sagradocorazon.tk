@@ -56,3 +56,21 @@ table {
 .boldSize{
   font-weight: bold;
 }
+
+.whatsappButton, .locationButton {
+  margin: 0px !important;
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: fixed !important;
+  float: right;
+  background-color: white !important;
+};
+.whatsappButton{
+  color: green !important;
+}
+.locationButton {
+  color: rgb(226, 124, 160) !important;
+  margin-right: 48px !important;
+};
