@@ -8,12 +8,13 @@ import { Typography } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export const BasicGrid = () => {
   const styledBox = { flexGrow: 1, color: 'rgb(48 48 48)', margin: '3%' };
 
-  const locationUrl = () => {
-    window.open('https://goo.gl/maps/oxmgzZoYHogm7sXp9', '_self');
+  const locationUrl = (url) => {
+    window.open(`${url}`, '_self');
   };
 
   const sendMessage = () => {
@@ -72,8 +73,15 @@ export const BasicGrid = () => {
         size='small'
         aria-label='Location'
         className='locationButton'
-        onClick={locationUrl}>
+        onClick={()=>locationUrl('https://goo.gl/maps/oxmgzZoYHogm7sXp9')}>
         <LocationOnIcon />
+      </Fab>
+      <Fab
+        size='small'
+        aria-label='Location'
+        className='youtubeButton'
+        onClick={()=>locationUrl('https://www.youtube.com/channel/UCMaenLMDmaaqgsf1vvjFs6g/featured')}>
+        <YouTubeIcon />
       </Fab>
     </>
   );
