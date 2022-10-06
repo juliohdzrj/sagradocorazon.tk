@@ -9,6 +9,7 @@ import Fab from '@mui/material/Fab';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 export const BasicGrid = () => {
   const styledBox = { flexGrow: 1, color: 'rgb(48 48 48)', margin: '3%' };
@@ -78,10 +79,17 @@ export const BasicGrid = () => {
       </Fab>
       <Fab
         size='small'
-        aria-label='Location'
+        aria-label='youtube'
         className='youtubeButton'
         onClick={()=>locationUrl('https://www.youtube.com/channel/UCMaenLMDmaaqgsf1vvjFs6g/featured')}>
         <YouTubeIcon />
+      </Fab>
+      <Fab
+        size='small'
+        aria-label='facebook'
+        className='facebookButton'
+        onClick={()=>locationUrl('https://www.facebook.com/profile.php?id=100086445518258&sk=about')}>
+        <FacebookIcon />
       </Fab>
     </>
   );

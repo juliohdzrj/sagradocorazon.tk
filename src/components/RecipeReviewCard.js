@@ -17,7 +17,7 @@ export default function RecipeReviewCard() {
         }}>
         <CardHeader
           title='Escuela de pastoral'
-          subheader='Inicio de curso 4 de septiembre, 2022'
+          subheader='Inicio de curso 16 de octubre, 2022'
         />
         <CardMedia
           component='img'
@@ -28,13 +28,11 @@ export default function RecipeReviewCard() {
           <Typography variant='body2' className='textBlue'>
             Te invita a conecer el mensaje que Cristo tiene para ti.
             <br />
-            ¿Cúando?Todos los domingos a 8: 00 horas en la capilla de <br />
+            ¿Cúando? Todos los domingos a 8:00 horas en la capilla de <br />
             <b className='boldSize'>Sagrado Corazón de María.</b> <br />
             <br />
             <b className='boldSize'>
-              Iniciamos un nuevo curso el 4 de septiembre.
-              <br />
-              Inscripciones domingo 21 y 28 de agosto.
+              Inscripciones todos los domingos de octubre.
             </b>
           </Typography>
         </CardContent>

@@ -57,7 +57,7 @@ table {
   font-weight: bold;
 }
 
-.whatsappButton, .locationButton, .youtubeButton {
+.whatsappButton, .locationButton, .youtubeButton, .facebookButton {
   margin: 0px !important;
   top: auto;
   right: 20px;
@@ -77,4 +77,8 @@ table {
 .youtubeButton {
   color:red !important;
   margin-right: 96px !important;
+};
+.facebookButton {
+  color:rgb(25 118 210) !important;
+  margin-right: 144px !important;
 };
