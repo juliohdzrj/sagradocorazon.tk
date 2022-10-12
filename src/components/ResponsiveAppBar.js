@@ -15,6 +15,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import appleTouchIcon from '../img/apple-touch-icon.png';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -53,7 +54,8 @@ const ResponsiveAppBar = () => {
     <AppBar position='static' sx={myReusableStyle}>
       <Container maxWidth='xl'>
         <Toolbar className='' disableGutters>
-          <FavoriteIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <img src={appleTouchIcon} alt="Sagrado Corazón de María" className="logoBar"/> */}
+          {/* <FavoriteIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           {/* <Typography
       variant='h6'
       noWrap
@@ -105,7 +107,8 @@ const ResponsiveAppBar = () => {
         ))}
       </Menu>
     </Box> */}
-          <FavoriteIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              <img src={appleTouchIcon} alt="Sagrado Corazón de María" className="logoBar"/>
+          {/* <FavoriteIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           {/* <Typography
       variant='h5'
       noWrap
